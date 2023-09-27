@@ -7,10 +7,10 @@ interface props {
     paragraph: string
 }
 
-export default function Card({ img, heading, paragraph }: props) {
+export default function Card({ img, alt, heading, paragraph }: props) {
     return (
         <div className={styles.card}>
-            <img src="" alt="alt" />
+            <img src={img} alt={alt} />
             <h1>{heading}</h1>
             <p>{paragraph}</p>
         </div>

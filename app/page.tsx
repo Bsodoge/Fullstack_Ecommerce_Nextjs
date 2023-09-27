@@ -1,5 +1,8 @@
 import styles from "./page.module.css"
 import hero_image from "../public/hero_image.jpg"
+import cart from "../public/cart.svg"
+import family from "../public/family.svg"
+import star from "../public/star.svg"
 import Card from "./components/Card"
 
 export default function Home() {
@@ -18,7 +21,9 @@ export default function Home() {
         <p>Take your taste buds through a sophisticated chocolate experience.</p>
         <button className={styles.button}>Find yours</button>
         <div className={styles.cards_container}>
-          <Card heading="2 million cases sold" paragraph="Unlocking your iPad's full potential, since 2010."></Card>
+          <Card heading="2 million cases sold" paragraph="Unlocking the full power of desserts, since 2010." img={cart.src} alt="Shopping cart"></Card>
+          <Card heading="100k 5-star reviews" paragraph="Quality speaks for itself, and our reviews do too." img={star.src} alt="Shopping cart"></Card>
+          <Card heading="Family-owned & operated" paragraph="Great quality and insight comes from working with the people we know best." img={family.src} alt="Shopping cart"></Card>
         </div>
       </section>
     </main>
