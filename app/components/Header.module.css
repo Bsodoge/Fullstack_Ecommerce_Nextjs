@@ -1,8 +1,11 @@
-.main{
+.header{
+    position: sticky;
     padding: 20px;
     display: flex;
     justify-content: space-between;
     color: #000;
+    top: 0;
+    background-color: #fff;
 }
 
 .logo{

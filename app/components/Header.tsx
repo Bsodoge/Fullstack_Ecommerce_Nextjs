@@ -3,7 +3,7 @@ import styles from "./Header.module.css"
 
 export default function Header(){
     return(
-        <main className={styles.main}>
+        <header className={styles.header}>
             <div className={styles.logo}>
                 NEXT
             </div>
@@ -13,6 +13,6 @@ export default function Header(){
                 <Link href="/"><button className={styles.button}>Cart</button></Link>
                 <div className="search"></div>
             </div>
-        </main>
+        </header>
     )
 }
