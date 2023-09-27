@@ -1,0 +1,12 @@
+.shipping{
+    padding: 10px;
+    background-color: #4e4e4e;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shipping a{
+    color: #fff;
+}
