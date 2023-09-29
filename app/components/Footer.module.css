@@ -1,0 +1,25 @@
+.footer{
+    display: grid;
+    padding: 2.5rem 1.25rem;
+    background-color: #000;
+    color: #fff;
+    gap: 20px;
+    grid-template-rows: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.links{
+    display: flex;
+    list-style: none;
+    gap: 16px;
+}
+
+.copyright{
+    font-size: 0.85rem;
+}
+
+.links > li > a{
+    color: #fff;
+}
