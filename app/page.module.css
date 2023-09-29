@@ -123,3 +123,35 @@
   padding: 15rem 20rem;
   box-shadow: 0 0 16px 8px #d9d7d8 inset;
 }
+
+.section.row > img{
+  width: 40vw;
+  height: 30vw;
+  object-fit: cover;
+}
+
+.section.row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.row_text{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 30%;
+  text-align: left;
+}
+
+.row_text > h1{
+  font-size: 2.5rem;
+}
+
+.row_text > p{
+  font-size: 0.925rem;
+}
+
+.row_text > .button{
+  align-self: flex-start;
+}

@@ -4,7 +4,9 @@ import cart from "../public/cart.svg"
 import family from "../public/family.svg"
 import star from "../public/star.svg"
 import shipping from "../public/shipping.svg"
-import desserts from "../public/desserts.jpg"
+import dessert1 from "../public/dessert1.jpg"
+import dessert2 from "../public/dessert2.jpg"
+import dessert3 from "../public/dessert3.jpg"
 import Card from "./components/Card"
 
 
@@ -41,10 +43,34 @@ export default function Home() {
         <section className={`${styles.section} ${styles.grey}`}>
           <div className={styles.bg_image}></div>
           <div className={styles.text}>
-            <h1>Our latest color drops.</h1>
-            <p>Now available in our most popular models.</p>
+            <h1>Our latest sweet drops.</h1>
+            <p>Now available in our most popular stores.</p>
             <button className={styles.button}>Shop Now</button>
           </div>
+        </section>
+        <section className={`${styles.section} ${styles.row}`}>
+          <div className={styles.row_text}>
+            <h1>Free Desserts (yes, really).</h1>
+            <p>We offer free desserts all the time. Less stress, more eating.</p>
+            <button className={styles.button}>Shop All</button>
+          </div>
+          <img src={dessert1.src} alt="Pink dessert" />
+        </section>
+        <section className={`${styles.section} ${styles.row}`}>
+          <img src={dessert2.src} alt="Lots of dessert" />
+          <div className={styles.row_text}>
+            <h1>Strike a pose.</h1>
+            <p>With nearly endless amount of desserts, you can always find one that looks right to you.</p>
+            <button className={styles.button}>Shop All</button>
+          </div>
+        </section>
+        <section className={`${styles.section} ${styles.row}`}>
+          <div className={styles.row_text}>
+            <h1>It's positively magnetic.</h1>
+            <p>Thanks to its handmade qaulities, you're sure to be attracted to our wide range of delicacies.</p>
+            <button className={styles.button}>Shop All</button>
+          </div>
+          <img src={dessert3.src} alt="Chocolate dessert" />
         </section>
       </div>
     </main>
