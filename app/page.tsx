@@ -72,6 +72,15 @@ export default function Home() {
           </div>
           <img src={dessert3.src} alt="Chocolate dessert" />
         </section>
+        <section className={`${styles.section} ${styles.charity_section}`}>
+          <div className={styles.charity}>
+            <div className={styles.charity_text}>
+              <h1>We bake dessers for the greater good.</h1>
+              <p>We share the belief that children everywhere are the future. That's why we use a portion of our profits to sponsor charities across the world through our partnership with The Super Cool Charity.</p>
+              <button className={styles.button}>Learn More</button>
+            </div>
+          </div>
+        </section>
       </div>
     </main>
   )

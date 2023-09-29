@@ -155,3 +155,34 @@
 .row_text > .button{
   align-self: flex-start;
 }
+
+.charity{
+  background-image: url('../public/charity.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 10rem 5rem;
+  border-radius: 20px;
+  box-shadow:  inset 0 0 0 2000px rgba(135,148,137, 0.85);
+}
+
+.charity_text{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 32px;
+  color: #fff;
+}
+
+.charity_text > h1{
+  font-size: 2.75rem;
+}
+
+.charity_text > p{
+  font-size: 1.25rem;
+}
+
+
+.charity_section{
+  padding: 25px 50px;
+}
