@@ -1,0 +1,35 @@
+.product_card_container{
+    padding: 40px 20px;
+    background-color: #eaebef;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.price{
+    font-size: 1.25rem;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.button{
+    padding: 5px 20px;
+    border-radius: 20px;
+    border: 1px solid #000;
+    background-color: #fff;
+    font-size: 1.25rem;
+    transition: all 250ms ease-in-out;
+    align-self: center;
+}
+
+.button:hover{
+    cursor: pointer;
+    background-color: #000;
+    color: #fff;
+    transition: all 250ms ease-in-out;
+}
