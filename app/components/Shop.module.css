@@ -1,0 +1,52 @@
+.shop_container{
+    display: grid;
+    gap: 64px;
+    padding: 10px;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: 0.5fr 2fr;
+}
+
+.options{
+    text-align: left;
+    padding: 20px 40px;
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+}
+
+.option_list{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.option > a > input:hover{
+    cursor: pointer;
+}
+
+.option input{
+    height: 20px;
+    width: 20px;
+}
+
+.option > a{
+    color: #000;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+
+.options > p{
+    font-size: 0.85rem;
+}
+
+.product_container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+}
