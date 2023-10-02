@@ -24,21 +24,14 @@
     gap: 8px;
 }
 
-.option > a > input:hover{
-    cursor: pointer;
+.option{
+    display: flex;
+    gap: 8px;
 }
 
 .option input{
     height: 20px;
     width: 20px;
-}
-
-.option > a{
-    color: #000;
-    text-decoration: none;
-    display: flex;
-    flex-direction: row;
-    gap: 4px;
 }
 
 .options > p{
