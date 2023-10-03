@@ -1,0 +1,13 @@
+.cart_container{
+    position: absolute;
+    padding: 5rem 2rem;
+    background-color: #f00;
+    right: 50px;
+    top: 100px;
+    visibility: collapse;
+}
+
+
+.active{
+    visibility: visible;
+}
