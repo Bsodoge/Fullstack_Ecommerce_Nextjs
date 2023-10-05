@@ -1,13 +1,34 @@
-.cart_container{
+.cart_container {
+    display: grid;
+    gap: 16px;
     position: absolute;
-    padding: 5rem 2rem;
-    background-color: #f00;
+    padding: 0.25rem 1rem 1rem;
+    background-color: #fff;
+    border-radius: 20px;
     right: 50px;
     top: 100px;
     visibility: collapse;
 }
 
+.close{
+    transform: scale(1.2);
+}
 
-.active{
+.close:hover{
+    cursor: pointer;
+}
+
+.close_container {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.active {
     visibility: visible;
+}
+
+.price_container {
+    display: flex;
+    justify-content: space-between;
 }
