@@ -20,11 +20,11 @@ export default function Shop() {
                     </ul>
                 </div>
                 <div className={styles.product_container}>
-                    <ProductCard img="" alt="img" productName="test" price={2} />
-                    <ProductCard img="" alt="img" productName="test" price={2} />
-                    <ProductCard img="" alt="img" productName="test" price={2} />
-                    <ProductCard img="" alt="img" productName="test" price={2} />
-                    <ProductCard img="" alt="img" productName="test" price={2} />
+                    <ProductCard id={1} img="" alt="img" productName="test" price={2} />
+                    <ProductCard id={2} img="" alt="img" productName="test" price={2} />
+                    <ProductCard id={3} img="" alt="img" productName="test" price={2} />
+                    <ProductCard id={4} img="" alt="img" productName="test" price={2} />
+                    <ProductCard id={5} img="" alt="img" productName="test" price={2} />
                 </div>
             </div>
         </div>
