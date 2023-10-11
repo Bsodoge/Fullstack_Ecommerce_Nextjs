@@ -18,11 +18,14 @@ interface shoppingCartContext {
     increaseCartQuantity: (id: number) => void,
     decreaseCartQuantity: (id: number) => void,
     removeFromCart: (id: number) => void,
-    cartQuantity: number
+    cartQuantity: number,
+    showCart: boolean,
+    setShowCart: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 
 export function ShoppingCartProvider({ children }: props) {
+    const [showCart, setShowCart] = useState<boolean>(false);
     const [cartItems, setCartItems] = useState<cartItem[]>([]);
     const getItemQuantity = (id: number) => {
         return cartItems.find(item => item.id === id)?.quantity || 0;
@@ -56,7 +59,7 @@ export function ShoppingCartProvider({ children }: props) {
         })
     }
     return (
-        <ShoppingCartContext.Provider value={{ getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart, cartQuantity }}>
+        <ShoppingCartContext.Provider value={{ getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart, cartQuantity, showCart, setShowCart }}>
             {children}
         </ShoppingCartContext.Provider>
     )
