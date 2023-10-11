@@ -12,7 +12,11 @@ interface props {
 }
 
 export default function ProductCard({ img, alt, productName, price, id }: props) {
-    const { increaseCartQuantity } = useShoppingCart();
+    const { increaseCartQuantity, setShowCart } = useShoppingCart();
+    const addToCart = () => {
+        increaseCartQuantity(id);
+        setShowCart(true);
+    }
     return (
         <div className={styles.product_card_container}>
             <div className={styles.container}>
@@ -21,7 +25,7 @@ export default function ProductCard({ img, alt, productName, price, id }: props)
             </div>
             <div className={styles.container}>
                 <p className={styles.price}><strong>£{price}</strong></p>
-                <button className={styles.button} onClick={e => increaseCartQuantity(id)}>Add To Cart</button>
+                <button className={styles.button} onClick={e => addToCart()}>Add To Cart</button>
             </div>
         </div>
     )

@@ -3,12 +3,10 @@
 import Link from "next/link"
 import styles from "./Header.module.css"
 import Cart from "./Cart"
-import { useState } from "react"
 import { useShoppingCart } from "../context/shoppingCartContext"
 
 export default function Header() {
-    const [showCart, setShowCart] = useState<boolean>(false);
-    const { cartQuantity } = useShoppingCart();
+    const { cartQuantity, setShowCart, showCart } = useShoppingCart();
     return (
         <header className={styles.header}>
             <div className={styles.logo}>
