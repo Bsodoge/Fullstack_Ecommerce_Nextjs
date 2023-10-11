@@ -1,3 +1,5 @@
+'use client'
+
 import { useContext, createContext, ReactNode } from "react";
 
 const ShoppingCartContext = createContext({});
