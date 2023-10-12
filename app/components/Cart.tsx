@@ -5,7 +5,7 @@ import styles from "./Cart.module.css"
 
 
 export default function Cart() {
-    const { setShowCart, showCart } = useShoppingCart();
+    const { setShowCart, showCart, cartItems } = useShoppingCart();
     const closeCart = () => {
         setShowCart(false);
     }
@@ -16,7 +16,9 @@ export default function Cart() {
             </div>
             <h1>Your Cart</h1>
             <div className={styles.cart_item}>
-
+                {
+                cartItems.map(item => <p>{item.id}</p>)
+                }
             </div>
             <div className={styles.price_container}>
                 <p>Subtotal:</p>
