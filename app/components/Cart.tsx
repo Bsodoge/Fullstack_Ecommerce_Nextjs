@@ -1,18 +1,16 @@
 'use client'
 
+import { useShoppingCart } from "../context/shoppingCartContext";
 import styles from "./Cart.module.css"
 
-interface props{
-    showCart: boolean,
-    setShowCart: Function
-}
 
-export default function Cart({showCart, setShowCart} : props){
+export default function Cart() {
+    const { setShowCart, showCart } = useShoppingCart();
     const closeCart = () => {
         setShowCart(false);
     }
-    return(
-        <div className={`${styles.cart_container} ${ showCart && styles.active}`}>
+    return (
+        <div className={`${styles.cart_container} ${showCart && styles.active}`}>
             <div className={styles.close_container}>
                 <span className={styles.close} onClick={e => closeCart()}>x</span>
             </div>
@@ -22,7 +20,7 @@ export default function Cart({showCart, setShowCart} : props){
             </div>
             <div className={styles.price_container}>
                 <p>Subtotal:</p>
-                <p className={styles.price}>${}</p>
+                <p className={styles.price}>${ }</p>
             </div>
             <button>Checkout</button>
         </div>

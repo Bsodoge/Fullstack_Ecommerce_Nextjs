@@ -18,7 +18,7 @@ export default function Header() {
                 <div className={styles.wrapper}><button className={styles.button} onClick={e => setShowCart(showcart => !showcart)}>Cart ({cartQuantity})</button></div>
                 <div className="search"></div>
             </div>
-            <Cart showCart={showCart} setShowCart={setShowCart} />
+            <Cart />
         </header>
     )
 }
