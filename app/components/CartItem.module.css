@@ -1,0 +1,23 @@
+.card_item_container{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.information{
+    flex: 2;
+}
+
+.remove{
+    align-self: flex-end;
+}
+
+.remove > button{
+    all: unset;
+    font-size: 0.825rem;
+    text-decoration: underline;
+}
+
+.remove > button:hover{
+    cursor: pointer;
+}
