@@ -19,7 +19,7 @@ export default function Home() {
           <p>Meet Mega Choc, now available.</p>
           <button className={styles.button}>Shop Now</button>
         </div>
-        <img src={hero_image.src} alt="A high quality photo of a piece of chocolate" />
+        <img loading="lazy" src={hero_image.src} alt="A high quality photo of a piece of chocolate" />
       </div>
       <div className={styles.section_container}>
         <section className={styles.section}>
@@ -32,7 +32,7 @@ export default function Home() {
             <Card heading="Family-owned & operated" paragraph="Great quality and insight comes from working with the people we know best." img={family.src} alt="Shopping cart"></Card>
           </div>
           <div className={styles.shipping}>
-            <img src={shipping.src} alt="Shipping" />
+            <img loading="lazy" src={shipping.src} alt="Shipping" />
             <div>
               <h2>Get fast, free delivery with Buy with Prime.</h2>
               <p>Use your Prime shopping benefits directly on our site.</p>
@@ -54,10 +54,10 @@ export default function Home() {
             <p>We offer free desserts all the time. Less stress, more eating.</p>
             <button className={styles.button}>Shop All</button>
           </div>
-          <img src={dessert1.src} alt="Pink dessert" />
+          <img loading="lazy" src={dessert1.src} alt="Pink dessert" />
         </section>
         <section className={`${styles.section} ${styles.row}`}>
-          <img src={dessert2.src} alt="Lots of dessert" />
+          <img loading="lazy" src={dessert2.src} alt="Lots of dessert" />
           <div className={styles.row_text}>
             <h1>Strike a pose.</h1>
             <p>With nearly endless amount of desserts, you can always find one that looks right to you.</p>
@@ -70,7 +70,7 @@ export default function Home() {
             <p>Thanks to its handmade qaulities, you're sure to be attracted to our wide range of delicacies.</p>
             <button className={styles.button}>Shop All</button>
           </div>
-          <img src={dessert3.src} alt="Chocolate dessert" />
+          <img loading="lazy" src={dessert3.src} alt="Chocolate dessert" />
         </section>
         <section className={`${styles.section} ${styles.charity_section}`}>
           <div className={styles.charity}>
