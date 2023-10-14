@@ -10,7 +10,7 @@ interface props {
 export default function Card({ img, alt, heading, paragraph }: props) {
     return (
         <div className={styles.card}>
-            <img src={img} alt={alt} />
+            <img loading="lazy" src={img} alt={alt} />
             <h1>{heading}</h1>
             <p>{paragraph}</p>
         </div>
