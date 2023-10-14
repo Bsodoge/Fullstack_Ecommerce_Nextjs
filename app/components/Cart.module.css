@@ -2,7 +2,7 @@
     display: grid;
     gap: 16px;
     position: absolute;
-    padding: 0.25rem 1rem 1rem;
+    padding: 0.25rem 2rem 1rem;
     background-color: #fff;
     border-radius: 20px;
     right: 50px;
@@ -10,11 +10,15 @@
     visibility: collapse;
 }
 
-.close{
+.cart_container>h1 {
+    text-align: center;
+}
+
+.close {
     transform: scale(1.2);
 }
 
-.close:hover{
+.close:hover {
     cursor: pointer;
 }
 
@@ -31,4 +35,29 @@
 .price_container {
     display: flex;
     justify-content: space-between;
+}
+
+.cart_items {
+    gap: 16px;
+    display: flex;
+    flex-direction: column;
+    height: 125px;
+    overflow-y: scroll;
+}
+
+
+.button {
+    padding: 5px 20px;
+    border-radius: 20px;
+    background-color: #444444;
+    font-size: 1.25rem;
+    border: none;
+    color: #fff;
+    transition: background-color 250ms ease-in-out;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: #000;
+    transition: background-color 250ms ease-in-out;
 }
