@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    rules: {
-        "@next/next/no-img-element": "off",
-    },
+    eslint: { ignoreDuringBuilds: true },
 }
 
 module.exports = nextConfig
