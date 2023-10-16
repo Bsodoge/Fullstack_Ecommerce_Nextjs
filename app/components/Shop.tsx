@@ -33,7 +33,7 @@ export default function Shop() {
                 </div>
                 <div className={styles.product_container}>
                     {
-                        products.map(product => <ProductCard id={product.id} img="" alt="img" productName={product.product_name} price={product.product_price} />
+                        products.map(product => <ProductCard key={product.id} id={product.id} img="" alt="img" productName={product.product_name} price={product.product_price} />
                         )
                     }
                 </div>
