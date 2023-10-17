@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0.5rem;
+}
+
+.product_info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.add_to_cart{
+    display: flex;
+    gap: 16px;
+}
