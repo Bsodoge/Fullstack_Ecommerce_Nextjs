@@ -15,7 +15,7 @@ interface props {
 
 interface shoppingCartContext {
     getItemQuantity: (id: number) => number,
-    increaseCartQuantity: (id: number) => void,
+    increaseCartQuantity: (id: number, quantity?: number) => void,
     decreaseCartQuantity: (id: number) => void,
     removeFromCart: (id: number) => void,
     cartQuantity: number,
@@ -32,13 +32,14 @@ export function ShoppingCartProvider({ children }: props) {
         return cartItems.find(item => item.id === id)?.quantity || 0;
     }
     const cartQuantity = cartItems.reduce((total, item) => total + item.quantity, 0)
-    const increaseCartQuantity = (id: number) => {
+    const increaseCartQuantity = (id: number, quantity? : number) => {
+        quantity = quantity || 1;
         setCartItems(prevCartItems => {
             if (!prevCartItems.find(item => item.id === id)) {
-                return [...prevCartItems, { id, quantity: 1 }]
+                return [...prevCartItems, { id, quantity: quantity! }]
             }
             return prevCartItems.map(items => {
-                if (items.id === id) return { ...items, quantity: items.quantity++ };
+                if (items.id === id) return { ...items, quantity: items.quantity + quantity! };
                 return items;
             })
         })
