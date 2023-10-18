@@ -21,6 +21,13 @@ export default function productPage({ params }: props) {
     const [product, setProduct] = useState<IProduct>();
     const { increaseCartQuantity } = useShoppingCart();
     const quantity = useRef<HTMLInputElement>(null);
+    const addToCart = () => {
+        if (Number(quantity.current!.value) < 1) {
+            console.log("invalid")
+        } else {
+            increaseCartQuantity(params.id, Number(quantity.current!.value));
+        }
+    }
     useEffect(() => {
         const options: RequestInit = {
             method: 'POST',
@@ -36,8 +43,8 @@ export default function productPage({ params }: props) {
                 <div className={styles.stars}></div>
                 <div className={styles.price}>£{product?.product_price}</div>
                 <div className={styles.add_to_cart}>
-                    <input type="number" className="quantity" min={1} ref={quantity} />
-                    <button className={styles.button} onClick={e => increaseCartQuantity(params.id, Number(quantity.current!.value))}>Add to cart</button>
+                    <input type="number" className="quantity" min={1} ref={quantity} defaultValue={1} />
+                    <button className={styles.button} onClick={e => addToCart()}>Add to cart</button>
                 </div>
             </div>
         </div>
