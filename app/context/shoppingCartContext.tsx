@@ -33,7 +33,7 @@ export function ShoppingCartProvider({ children }: props) {
     }
     const cartQuantity = cartItems.reduce((total, item) => total + item.quantity, 0)
     const increaseCartQuantity = (id: number, quantity? : number) => {
-        quantity = quantity || 1;
+        quantity = quantity  || 1;
         setCartItems(prevCartItems => {
             if (!prevCartItems.find(item => item.id === id)) {
                 return [...prevCartItems, { id, quantity: quantity! }]
