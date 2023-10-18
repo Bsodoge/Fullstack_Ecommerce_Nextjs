@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useState } from "react"
 import { useShoppingCart } from "../context/shoppingCartContext"
 import styles from "./CartItem.module.css"
 
@@ -8,16 +9,32 @@ interface props {
     quantity: number
 }
 
+interface IProduct {
+    id: number,
+    product_name: string,
+    product_image: string,
+    product_price: number
+}
+
 export default function CartItem({ id, quantity }: props) {
     const { removeFromCart } = useShoppingCart();
+    const [product, setProduct] = useState<IProduct>();
+
+    useEffect(() => {
+        const options: RequestInit = {
+            method: 'POST',
+            body: JSON.stringify(id)
+        }
+        fetch('/api/getSpecificProduct', options).then(response => response.json()).then(data => setProduct(data));
+    }, [])
     return (
         <div className={styles.card_item_container}>
             <div className={styles.img_container}>
                 <img src="" alt="test" />
             </div>
             <div className={styles.information}>
-                <div className={styles.name}>{id}</div>
-                <div className={styles.price}>£</div>
+                <div className={styles.name}>{product?.product_name}</div>
+                <div className={styles.price}>£{product?.product_price}</div>
                 <div className={styles.quantity}>QTY: {quantity}</div>
             </div>
             <div className={styles.remove}>
