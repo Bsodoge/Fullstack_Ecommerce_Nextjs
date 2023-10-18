@@ -5,7 +5,7 @@ import ProductCard from "./ProductCard"
 import { useQueryState } from 'next-usequerystate'
 import { useEffect, useState } from "react";
 
-interface product{
+interface IProduct{
     id: number,
     product_name: string,
     product_image: string,
@@ -14,7 +14,7 @@ interface product{
 
 export default function Shop() {
     const [category, setCategory] = useQueryState('category');
-    const [products, setProducts] = useState<product[]>([]);
+    const [products, setProducts] = useState<IProduct[]>([]);
     useEffect(() => {
         fetch('/api/getData').then(response => response.json()).then(data => setProducts(data));
     }, [])
@@ -33,8 +33,7 @@ export default function Shop() {
                 </div>
                 <div className={styles.product_container}>
                     {
-                        products.map(product => <ProductCard key={product.id} id={product.id} img="" alt="img" productName={product.product_name} price={product.product_price} />
-                        )
+                        products.map(product => <ProductCard key={product.id} id={product.id} img="" alt="img" productName={product.product_name} price={product.product_price} />)
                     }
                 </div>
             </div>
