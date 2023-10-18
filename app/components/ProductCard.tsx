@@ -1,5 +1,6 @@
 'use client'
 
+import Link from "next/link";
 import { useShoppingCart } from "../context/shoppingCartContext";
 import styles from "./ProductCard.module.css"
 
@@ -21,7 +22,7 @@ export default function ProductCard({ img, alt, productName, price, id }: props)
         <div className={styles.product_card_container}>
             <div className={styles.container}>
                 <img loading="lazy" src={img} alt={alt} />
-                <h1>{productName}</h1>
+                <Link href={`products/${id}`}><h1>{productName}</h1></Link>
             </div>
             <div className={styles.container}>
                 <p className={styles.price}><strong>£{price}</strong></p>
