@@ -12,7 +12,74 @@
     gap: 16px;
 }
 
-.add_to_cart{
+.add_to_cart {
     display: flex;
     gap: 16px;
 }
+
+.quantity {
+    width: 20%;
+    padding: 10px;
+    text-align: center;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: #000;
+    transition: all 250ms ease-in-out;
+}
+
+.button {
+    padding: 5px 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: #444444;
+    font-size: 1.25rem;
+    color: #fff;
+    transition: all 250ms ease-in-out;
+}
+
+.stars {
+    display: flex;
+    margin-right: auto;
+
+}
+
+.star{
+    opacity: 50%;
+    cursor: pointer;
+    padding: 3px;
+}
+
+.star input{
+/*     all: unset;
+ */}
+
+.stars:hover .star{
+    opacity: 100%;
+}
+
+.star:hover{
+    opacity: 100%;
+}
+
+.stars .star:hover ~ .star{
+    opacity: 50%;
+}
+
+.star:has(input:checked){
+    opacity: 100%;
+}
+
+.stars:has(.star input:checked) .star {
+    opacity: 100%;
+}
+
+.stars .star:has(input:checked) ~ .star  {
+    opacity: 50%;
+}
+
+/* 
+.stars .star:has(input:checked) .star {
+    opacity: 100%;
+} */
