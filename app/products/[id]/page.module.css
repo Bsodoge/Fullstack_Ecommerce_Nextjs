@@ -52,8 +52,8 @@
 }
 
 .star input{
-/*     all: unset;
- */}
+    appearance: none;
+}
 
 .stars:hover .star{
     opacity: 100%;
