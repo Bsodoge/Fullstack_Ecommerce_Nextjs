@@ -1,0 +1,42 @@
+.card_item_container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+}
+
+.information {
+    flex: 2;
+}
+
+.img_container{
+    position: relative;
+}
+
+.quantity {
+    position: absolute;
+    bottom: 50px;
+    left: 30px;
+    background-color: #7e7e7e;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    /* or inline-flex */
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 0.8rem;
+}
+
+.price_container {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    font-size: 0.85rem;
+}
+
+.information{
+    display: flex;
+    justify-content: space-between;
+}
