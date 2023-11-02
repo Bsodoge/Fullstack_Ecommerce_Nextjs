@@ -1,0 +1,103 @@
+.field{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.field > * {
+    padding: 4px;
+    width: 100%;
+}
+
+.error{
+    color: #dd1d1d;
+}
+
+.input input,
+.input select {
+    width: 100%;
+    padding: 10px 0;
+    padding-left: 10px;
+    border-radius: 4px;
+    border: 1px solid #737373;
+}
+
+.input select {
+    background-color: #fff;
+}
+
+.contact h3,
+.shipping h3 {
+    font-weight: normal;
+}
+
+.form {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.shipping {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+}
+
+.shipping>.input {
+    display: flex;
+    gap: 8px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.right{
+    font-size: 20px;
+}
+
+.return{
+    all: unset;
+}
+
+.shipping_button{
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #000;
+    background-color: #000;
+    font-size: 1rem;
+    color: #fff;
+}
+
+.shipping_button:hover{
+    cursor: pointer;
+}
+
+.cards_list{
+    align-self: end;
+    display: flex;
+    gap: 4px;
+}
+
+.cards_list > img{
+    width: 30px;
+}
+
+.card-list p{
+    font-size: 0.8rem;
+    color: #6e6e6e;
+}
+
+
+.top_container{
+    display: flex;
+    justify-content: space-between;
+}

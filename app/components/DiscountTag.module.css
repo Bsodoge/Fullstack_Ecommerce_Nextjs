@@ -1,0 +1,18 @@
+.tag_container {
+    display: flex;
+    gap: 4px;
+    padding: 10px 5px;
+    background-color: #e6e6e6;
+    display: flex;
+    align-items: center; 
+}
+
+.remove{
+    font-size: 1.25rem;
+    margin-bottom: 2.5px;
+    color: #7a7a7a;
+}
+
+.remove:hover {
+    cursor: pointer;
+}
