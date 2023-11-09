@@ -1,13 +1,11 @@
 'use client'
 
 import { useContext, createContext, ReactNode, useState } from "react";
+import { ICartItem } from "../interfaces/ICartItem";
 
 const ShoppingCartContext = createContext({} as shoppingCartContext);
 
-interface cartItem {
-    id: number,
-    quantity: number
-}
+
 
 interface props {
     children: ReactNode
@@ -21,19 +19,19 @@ interface shoppingCartContext {
     cartQuantity: number,
     showCart: boolean,
     setShowCart: React.Dispatch<React.SetStateAction<boolean>>,
-    cartItems: cartItem[]
+    cartItems: ICartItem[]
 }
 
 
 export function ShoppingCartProvider({ children }: props) {
     const [showCart, setShowCart] = useState<boolean>(false);
-    const [cartItems, setCartItems] = useState<cartItem[]>([]);
+    const [cartItems, setCartItems] = useState<ICartItem[]>([]);
     const getItemQuantity = (id: number) => {
         return cartItems.find(item => item.id === id)?.quantity || 0;
     }
     const cartQuantity = cartItems.reduce((total, item) => total + item.quantity, 0)
-    const increaseCartQuantity = (id: number, quantity? : number) => {
-        quantity = quantity  || 1;
+    const increaseCartQuantity = (id: number, quantity?: number) => {
+        quantity = quantity || 1;
         setCartItems(prevCartItems => {
             if (!prevCartItems.find(item => item.id === id)) {
                 return [...prevCartItems, { id, quantity: quantity! }]
