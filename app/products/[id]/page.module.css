@@ -49,10 +49,14 @@
     opacity: 50%;
     cursor: pointer;
     padding: 3px;
+    position: relative;
 }
 
 .star input{
-    appearance: none;
+    position: absolute;
+    opacity: 0;
+    top: 10px;
+    right: 2.5px;
 }
 
 .stars:hover .star{
