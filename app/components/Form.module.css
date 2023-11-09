@@ -68,6 +68,10 @@
     all: unset;
 }
 
+.return:hover{
+    cursor: pointer;
+}
+
 .shipping_button{
     padding: 10px;
     border-radius: 5px;
