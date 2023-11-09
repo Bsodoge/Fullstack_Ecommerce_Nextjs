@@ -3,17 +3,11 @@
 import { useEffect, useState } from "react"
 import { useShoppingCart } from "../context/shoppingCartContext"
 import styles from "./CartItem.module.css"
+import { IProduct } from "../interfaces/IProduct";
 
 interface props {
     id: number,
     quantity: number
-}
-
-interface IProduct {
-    id: number,
-    product_name: string,
-    product_image: string,
-    product_price: number
 }
 
 export default function CartItem({ id, quantity }: props) {
