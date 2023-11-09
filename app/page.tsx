@@ -8,6 +8,7 @@ import dessert1 from "../public/dessert1.jpg"
 import dessert2 from "../public/dessert2.jpg"
 import dessert3 from "../public/dessert3.jpg"
 import Card from "./components/Card"
+import Link from "next/link"
 
 
 export default function Home() {
@@ -17,7 +18,7 @@ export default function Home() {
         <div className={styles.text}>
           <h1>Introducing- our most delicious dessert yet.</h1>
           <p>Meet Mega Choc, now available.</p>
-          <button className={styles.button}>Shop Now</button>
+          <Link href="/products?category=All"><button className={styles.button}>Shop Now</button></Link>
         </div>
         <img loading="lazy" src={hero_image.src} alt="A high quality photo of a piece of chocolate" />
       </div>
