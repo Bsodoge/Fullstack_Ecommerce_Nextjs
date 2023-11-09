@@ -1,19 +1,17 @@
 'use client'
 
 import DiscountTag from "../components/DiscountTag";
-import ListItem from "../components/ListItem";
 import { useShoppingCart } from "../context/shoppingCartContext"
 import { IDiscount } from "../interfaces/IDiscount";
 import { IProduct } from "../interfaces/IProduct";
 import styles from "./page.module.css"
-import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AddressForm from "../components/AddressForm";
 import CardForm from "../components/CardForm";
-
+import ItemsContainer from "../components/ItemsContainer";
 
 export default function Checkout() {
     const { cartItems } = useShoppingCart();
-    const form = useRef<HTMLFormElement>(null);
     const [formStage, setFormStage] = useState<string>("details");
     const [products, setProducts] = useState<IProduct[]>([]);
     const [totalPrice, setTotalPrice] = useState<number>(0);
@@ -57,15 +55,11 @@ export default function Checkout() {
                     formStage === 'details' ?
                         <AddressForm setFormStage={setFormStage}/>
                         :
-                        <CardForm />
+                        <CardForm setFormStage={setFormStage} />
                 }
             </div>
             <div className={styles.list_column}>
-                <div className={styles.items_container}>
-                    {
-                        cartItems.map(item => <ListItem key={item.id} id={item.id} quantity={item.quantity} />)
-                    }
-                </div>
+                <ItemsContainer cartItems={cartItems}/>
                 <div className={styles.bottom_container}>
                     <div className={styles.discount_container}>
                         <div className={styles.discount_input_container}>
