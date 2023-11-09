@@ -4,9 +4,11 @@ import amex from "../../public/amex.svg";
 import mastercard from "../../public/mastercard.svg";
 import visa from "../../public/visa.svg";
 import { ICardValidation } from "../interfaces/ICardValidation";
+interface props {
+    setFormStage: Function
+}
 
-export default function CardForm() {
-
+export default function CardForm({ setFormStage }: props) {
     const [cardData, setCardData] = useState<ICardValidation>({
         cardNumber: '',
         cardName: '',
@@ -19,15 +21,16 @@ export default function CardForm() {
         expiryDate: '',
         securityCode: ''
     })
-    const luhnCheck = (cc : string) : boolean => {
+    const luhnCheck = (cc: string): boolean => {
         let oddSum = 0;
         let evenSum = 0;
-        for(let i = cc.length-1; i > -1; i--){
-            if(Number.isNaN(cc[i])) return false;
-            if(i % 2 !== 0) oddSum += Number(cc[i]);
+        cc = cc.trim();
+        for (let i = cc.length - 1; i > -1; i--) {
+            if (Number.isNaN(cc[i])) return false;
+            if (i % 2 !== 0) oddSum += Number(cc[i]);
             else {
                 let evenNum = Number(cc[i]) * 2;
-                if(evenNum >= 10) evenNum = 1 + (evenNum % 10);
+                if (evenNum >= 10) evenNum = 1 + (evenNum % 10);
                 evenSum += evenNum;
             };
         }
@@ -38,7 +41,7 @@ export default function CardForm() {
     const handleCardSubmit = (e: FormEvent) => {
         e.preventDefault();
         const validationErrors: any = {}
-        if (!cardData.cardNumber.trim().length || luhnCheck(cardData.cardNumber) || cardData.cardNumber.length < 10) {
+        if (!cardData.cardNumber.trim().length || !luhnCheck(cardData.cardNumber) || cardData.cardNumber.length < 10) {
             validationErrors.cardNumber = "Card Number is not valid.";
         }
         if (!cardData.cardName.trim().length) {
@@ -100,7 +103,7 @@ export default function CardForm() {
                 </div>
             </div>
             <div className={styles.buttons}>
-                <button className={styles.return}><span className={styles.right}>&#8249;</span> Return to shipping</button>
+                <button className={styles.return} onClick={e => setFormStage("details")}><span className={styles.right}>&#8249;</span> Return to shipping</button>
                 <button className={styles.shipping_button} >Continue to payment</button>
             </div>
         </form>
