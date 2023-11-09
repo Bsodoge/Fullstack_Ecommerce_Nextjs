@@ -1,12 +1,14 @@
 import styles from "./Form.module.css"
 import { IAddressValidation } from "../interfaces/IAddressValidation";
 import { ChangeEvent, FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface props {
     setFormStage: Function
 }
 
 export default function AddressForm({setFormStage} : props) {
+    const route = useRouter();
     const [addressData, setAddressData] = useState<IAddressValidation>({
         email: '',
         country: '',
@@ -386,7 +388,7 @@ export default function AddressForm({setFormStage} : props) {
                 </div>
             </div>
             <div className={styles.buttons}>
-                <button className={styles.return}><span className={styles.right}>&#8249;</span> Return to cart</button>
+                <button className={styles.return} onClick={e => route.push("/")}><span className={styles.right}>&#8249;</span> Return to cart</button>
                 <button className={styles.shipping_button}>Continue to payment</button>
             </div>
         </form>
