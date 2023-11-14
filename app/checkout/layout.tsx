@@ -16,8 +16,9 @@ export default function CheckoutLayout({
     useEffect(() => {
         (async () => {
             const response = await fetch("/api/auth/checkToken");
+            const data = await response.json();
             console.log(response);
-            if(response.status === 200) setIsLoading(false);
+            if(data.authenticated) setIsLoading(false);
             else route.push("/login");
         })();
     },[])

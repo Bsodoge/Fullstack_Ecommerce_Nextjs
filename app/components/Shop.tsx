@@ -11,8 +11,11 @@ export default function Shop() {
     const [products, setProducts] = useState<IProduct[]>([]);
     useEffect(() => {
         setCategory(prevCategory => prevCategory === null ? 'All' : prevCategory);
-        fetch('/api/getData').then(response => response.json()).then(data => setProducts(data));
-        console.log(category)
+        (async () => {
+            const response = await fetch('/api/getData');
+            const data = await response.json();
+            setProducts(data);
+        })()
     }, [])
     return (
         <div className={styles.shop_container}>

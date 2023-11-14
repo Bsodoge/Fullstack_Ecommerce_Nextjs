@@ -5,6 +5,7 @@ import ShippingHeader from './components/ShippingHeader'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import { ShoppingCartProvider } from './context/shoppingCartContext'
+import { UserContextProvider } from './context/userContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,10 +23,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ShippingHeader />
-        <ShoppingCartProvider>
-          <Header />
-          {children}
-        </ShoppingCartProvider>
+        <UserContextProvider>
+          <ShoppingCartProvider>
+            <Header />
+            {children}
+          </ShoppingCartProvider>
+        </UserContextProvider>
         <Footer />
       </body>
     </html>

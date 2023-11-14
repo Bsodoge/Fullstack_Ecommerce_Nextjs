@@ -7,14 +7,14 @@ const MAX_AGE = 60 * 60 * 24 * 30;
 export async function POST(request: Request) {
     const registerInfo = await request.json();
     console.log(registerInfo)
-    if (!registerInfo.password.trim().length || !registerInfo.username.trim().length || registerInfo.password !== registerInfo.reenterpassword) {
-        return new Response(JSON.stringify({ message: 'Bad data', authenticated: false }), { status: 401 });
+    if (!registerInfo.password.trim().length || !registerInfo.username.trim().length || registerInfo.password !== registerInfo.reenterpassword || registerInfo.password.length < 8) {
+        return new Response(JSON.stringify({ message: 'An error occured, please try again.', authenticated: false }), { status: 401 });
     }
     try {
         const { rows }  = await sql`SELECT * FROM users WHERE username = ${registerInfo.username.toLowerCase()}`;
-        if(rows) return new Response(JSON.stringify({ message: 'User already exists', authenticated: false }), { status: 401 });
+        if(rows.length) return new Response(JSON.stringify({ message: 'User already exists', authenticated: false }), { status: 401 });
         const hash = await bcrypt.hash(registerInfo.password, 13);
-        const createUser = await sql`INSERT INTO users (username, password) VALUES (${registerInfo.username.toLowerCase()}, ${hash})`;
+        await sql`INSERT INTO users (username, password) VALUES (${registerInfo.username.toLowerCase()}, ${hash})`;
         const secret = process.env.JWT_SECRET || '';
         const token = sign(
             {
