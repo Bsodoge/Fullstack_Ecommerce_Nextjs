@@ -3,16 +3,26 @@
 import { FormEvent, useRef, useState } from "react";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { useUser } from "../context/userContext";
 export default function Login() {
     const usernameInput = useRef<HTMLInputElement>(null);
     const passwordInput = useRef<HTMLInputElement>(null);
-    const [error, setError] = useState<boolean>(false);
+    const { setLoggedIn } = useUser();
+    const [errors, setErrors] = useState({
+        usernameEmpty: '',
+        passwordEmpty: '',
+        invalid: ''
+    });
     const route = useRouter();
     const handleSubmit = async (e: FormEvent) => {
+        const loginErrors: any = {};
         e.preventDefault();
-        if (!usernameInput.current?.value.trim().length || !passwordInput.current?.value.trim().length) {
-            setError(true);
-            return;
+        if (!usernameInput.current?.value.trim().length) {
+            loginErrors.usernameEmpty = 'Please enter a username';
+        }
+        if (!passwordInput.current?.value.trim().length) {
+            loginErrors.passwordEmpty = 'Please enter a password';
         }
         const options: RequestInit = {
             method: 'POST',
@@ -21,9 +31,11 @@ export default function Login() {
         const response = await fetch('/api/auth/login', options);
         const data = await response.json();
         if (!data.authenticated) {
-            setError(true);
-        } else {
-            setError(false);
+            loginErrors.invalid = data.message;
+        }
+        setErrors(loginErrors);
+        if (!Object.keys(loginErrors).length) {
+            setLoggedIn(true);
             route.push('/checkout');
         }
     }
@@ -31,17 +43,19 @@ export default function Login() {
         <main className={styles.main}>
             <form action="" className={styles.form} onSubmit={handleSubmit}>
                 <h1>Sign in</h1>
-                {error ? <span className={styles.error}>Username or password is incorrect</span> : <></>}
+                {errors.invalid ? <span className={styles.error}>{errors.invalid}</span> : <></>}
                 <div className={styles.field}>
                     <input type="text" name="username" id="" placeholder="Username" ref={usernameInput} required />
+                    {errors.usernameEmpty ? <span className={styles.error}>{errors.usernameEmpty}</span> : <></>}
                 </div>
                 <div className={styles.field}>
                     <input type="password" name="passowrd" id="" placeholder="Password" ref={passwordInput} required />
+                    {errors.passwordEmpty ? <span className={styles.error}>{errors.passwordEmpty}</span> : <></>}
                 </div>
                 <button className={styles.signin_button} >Continue</button>
             </form>
             <span>New to next?</span>
-            <button className={styles.signup_button}>Create your new next account</button>
+            <Link href="/register"><button className={styles.signup_button}>Create your new next account</button></Link>
         </main>
     )
 }
