@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useShoppingCart } from "../context/shoppingCartContext";
+import { useUser } from "../context/userContext";
 import styles from "./ProductCard.module.css"
 
 interface props {
@@ -14,9 +15,19 @@ interface props {
 
 export default function ProductCard({ img, alt, productName, price, id }: props) {
     const { increaseCartQuantity, setShowCart } = useShoppingCart();
-    const addToCart = () => {
+    const { loggedIn, userID } = useUser();
+    const { cartItems } = useShoppingCart();
+    const addToDatabase = async () => {
+        const options: RequestInit = {
+            method: 'POST',
+            body: JSON.stringify({ shoppingCart: cartItems, userID: userID})
+        }
+        const response = await fetch('/api/setShoppingCart', options);
+    }
+    const addToCart = async () => {
         increaseCartQuantity(id);
         setShowCart(true);
+        loggedIn ? addToDatabase() : console.log("not signed in")
     }
     return (
         <div className={styles.product_card_container}>
