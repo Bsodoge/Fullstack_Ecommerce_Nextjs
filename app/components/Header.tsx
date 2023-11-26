@@ -32,9 +32,7 @@ export default function Header() {
                 }
                 const response = await fetch('/api/getShoppingCart', options);
                 let cart = await response.json();
-                let formattedCart = cart.replace('/\/', '').split().map((i: any) => JSON.parse(i));
-                console.log(formattedCart);   
-                formattedCart ? setCartItems(cartItems => formattedCart) : console.log("not found");
+                cart ? setCartItems(cartItems => cart) : console.log("not found");
             }
         })();
     }, [])

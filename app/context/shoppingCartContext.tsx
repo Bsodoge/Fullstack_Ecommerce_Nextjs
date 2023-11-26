@@ -19,7 +19,8 @@ interface shoppingCartContext {
     cartQuantity: number,
     showCart: boolean,
     setShowCart: React.Dispatch<React.SetStateAction<boolean>>,
-    cartItems: ICartItem[]
+    cartItems: ICartItem[],
+    setCartItems: React.Dispatch<React.SetStateAction<ICartItem[]>>
 }
 
 
@@ -59,7 +60,7 @@ export function ShoppingCartProvider({ children }: props) {
         })
     }
     return (
-        <ShoppingCartContext.Provider value={{ getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart, cartQuantity, showCart, setShowCart, cartItems }}>
+        <ShoppingCartContext.Provider value={{ getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart, cartQuantity, showCart, setShowCart, cartItems , setCartItems}}>
             {children}
         </ShoppingCartContext.Provider>
     )

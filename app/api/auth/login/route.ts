@@ -22,7 +22,8 @@ export async function POST(request: Request) {
     const secret = process.env.JWT_SECRET || '';
     const token = sign(
         {
-            username: loginInfo.username
+            username: loginInfo.username,
+            id: rows[0].id
         },
         secret, {
         expiresIn: MAX_AGE
@@ -36,5 +37,5 @@ export async function POST(request: Request) {
         path: '/'
     }
     )
-    return new Response(JSON.stringify({ message: 'Authenticated', authenticated: true }), { status: 200, headers: { "Set-Cookie": serialized } });
+    return new Response(JSON.stringify({ message: 'Authenticated', authenticated: true, id: rows[0].id }), { status: 200, headers: { "Set-Cookie": serialized } });
 }

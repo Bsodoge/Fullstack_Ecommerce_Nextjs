@@ -9,7 +9,7 @@ export default function Login() {
     const passwordInput = useRef<HTMLInputElement>(null);
     const emailInput = useRef<HTMLInputElement>(null);
     const passwordReenterInput = useRef<HTMLInputElement>(null);
-    const { setLoggedIn } = useUser();
+    const { setLoggedIn, setUserID } = useUser();
     const [errors, setErrors] = useState({
         usernameEmpty: '',
         passwordEmpty: '',
@@ -48,6 +48,7 @@ export default function Login() {
             }
             const response = await fetch('/api/auth/register', options);
             const data = await response.json();
+            setUserID(data?.id);
             if (!data.authenticated) {
                 registerErrors.invalid = data.message;
             }

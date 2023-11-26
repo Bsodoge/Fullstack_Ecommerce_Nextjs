@@ -8,7 +8,7 @@ import { useUser } from "../context/userContext";
 export default function Login() {
     const usernameInput = useRef<HTMLInputElement>(null);
     const passwordInput = useRef<HTMLInputElement>(null);
-    const { setLoggedIn } = useUser();
+    const { setLoggedIn, setUserID } = useUser();
     const [errors, setErrors] = useState({
         usernameEmpty: '',
         passwordEmpty: '',
@@ -36,6 +36,8 @@ export default function Login() {
         setErrors(loginErrors);
         if (!Object.keys(loginErrors).length) {
             setLoggedIn(true);
+            console.log(data.id)
+            setUserID(data.id);
             route.push('/checkout');
         }
     }

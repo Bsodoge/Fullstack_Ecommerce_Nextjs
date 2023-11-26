@@ -5,7 +5,8 @@ import ShippingHeader from './components/ShippingHeader'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import { ShoppingCartProvider } from './context/shoppingCartContext'
-import { UserContextProvider } from './context/userContext'
+import { UserContextProvider, useUser } from './context/userContext'
+import { useEffect } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 

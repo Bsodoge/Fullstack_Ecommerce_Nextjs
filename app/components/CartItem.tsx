@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { useShoppingCart } from "../context/shoppingCartContext"
+import { useUser } from "../context/userContext"
 import styles from "./CartItem.module.css"
 import { IProduct } from "../interfaces/IProduct";
 
@@ -11,9 +12,17 @@ interface props {
 }
 
 export default function CartItem({ id, quantity }: props) {
-    const { removeFromCart } = useShoppingCart();
+    const { removeFromCart, cartItems } = useShoppingCart();
+    const { userID, loggedIn } = useUser();
     const [product, setProduct] = useState<IProduct>();
-
+    const removeFromDatabase = async () => {
+        removeFromCart(id);
+        const options: RequestInit = {
+            method: 'POST',
+            body: JSON.stringify({ shoppingCart: cartItems, userID: userID })
+        }
+        const response = await fetch('/api/setShoppingCart', options);
+    }
     useEffect(() => {
         const options: RequestInit = {
             method: 'POST',
@@ -32,7 +41,7 @@ export default function CartItem({ id, quantity }: props) {
                 <div className={styles.quantity}>QTY: {quantity}</div>
             </div>
             <div className={styles.remove}>
-                <button onClick={e => removeFromCart(id)}>Remove</button>
+                <button onClick={e => loggedIn ? removeFromDatabase() : console.log("not signed in")}>Remove</button>
             </div>
         </div>
     )
