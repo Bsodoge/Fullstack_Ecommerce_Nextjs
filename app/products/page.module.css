@@ -1,6 +1,6 @@
 .main{
     min-height: 100vh;
     text-align: center;
-    display: grid;
+    /* display: grid; */
     /* grid-template-rows: 1fr 2fr; */
 }
