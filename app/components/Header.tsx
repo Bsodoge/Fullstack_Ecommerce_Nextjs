@@ -40,9 +40,11 @@ export default function Header() {
     }, [])
     return (
         <header className={styles.header}>
-            <div className={styles.logo}>
-                NEXT
-            </div>
+            <Link href={'/'} className={styles.logo}>
+                <div>
+                    NEXT
+                </div>
+            </Link>
             <div className={styles.buttons}>
                 {loggedIn ? <Link href="/" onClick={logOut}><button className={styles.button}>Log out</button></Link> : <Link href="/login"><button className={styles.button}>Log in</button></Link>}
                 <Link href="/"><button className={styles.button}>About</button></Link>

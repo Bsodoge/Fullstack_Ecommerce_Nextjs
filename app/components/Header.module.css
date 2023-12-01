@@ -11,7 +11,9 @@
 }
 
 .logo{
-    font-size: 2.5rem;
+    font-size: 3rem;
+    text-decoration: none;
+    color: #000;
 }
 
 .buttons{
