@@ -5,10 +5,12 @@ import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useUser } from "../context/userContext";
+import { useShoppingCart } from "../context/shoppingCartContext";
 export default function Login() {
     const usernameInput = useRef<HTMLInputElement>(null);
     const passwordInput = useRef<HTMLInputElement>(null);
     const { setLoggedIn, setUserID } = useUser();
+    const { setCartItems } = useShoppingCart();
     const [errors, setErrors] = useState({
         usernameEmpty: '',
         passwordEmpty: '',
@@ -38,6 +40,14 @@ export default function Login() {
             setLoggedIn(true);
             console.log(data.id)
             setUserID(data.id);
+            const options: RequestInit = {
+                method: 'POST',
+                body: JSON.stringify(data.id)
+            }
+            const response = await fetch('/api/getShoppingCart', options);
+            const cart = await response.json();
+            console.log(cart);
+            cart ? setCartItems(cartItems => cart) : console.log("not found");
             route.push('/checkout');
         }
     }

@@ -9,12 +9,13 @@ import { useUser } from "../context/userContext"
 import { ICartItem } from "../interfaces/ICartItem"
 
 export default function Header() {
-    const { cartQuantity, setShowCart, showCart, setCartItems } = useShoppingCart();
+    const { cartQuantity, setShowCart, showCart, setCartItems, emptyCart } = useShoppingCart();
     const { loggedIn, setLoggedIn, setUserID } = useUser();
     const [loading, setLoading] = useState(true);
     const logOut = async () => {
         await fetch('api/auth/logout');
         setLoggedIn(false);
+        emptyCart();
     }
     const setShoppingCart = async ({ newCart }: { newCart: ICartItem[] }) => {
         setCartItems(newCart);
@@ -31,7 +32,8 @@ export default function Header() {
                     body: JSON.stringify(data.id)
                 }
                 const response = await fetch('/api/getShoppingCart', options);
-                let cart = await response.json();
+                const cart = await response.json();
+                console.log(cart);
                 cart ? setCartItems(cartItems => cart) : console.log("not found");
             }
         })();
