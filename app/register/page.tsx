@@ -4,11 +4,13 @@ import { FormEvent, useRef, useState } from "react";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
 import { useUser } from "../context/userContext";
+import { useShoppingCart } from "../context/shoppingCartContext";
 export default function Login() {
     const usernameInput = useRef<HTMLInputElement>(null);
     const passwordInput = useRef<HTMLInputElement>(null);
     const emailInput = useRef<HTMLInputElement>(null);
     const passwordReenterInput = useRef<HTMLInputElement>(null);
+    const { emptyCart } = useShoppingCart();
     const { setLoggedIn, setUserID } = useUser();
     const [errors, setErrors] = useState({
         usernameEmpty: '',
@@ -56,6 +58,7 @@ export default function Login() {
         setErrors(registerErrors);
         if (!Object.keys(registerErrors).length) {
             setLoggedIn(true);
+            emptyCart();
             route.push('/checkout');
         }
     }
