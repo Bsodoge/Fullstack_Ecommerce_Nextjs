@@ -15,13 +15,16 @@ export default function CartItem({ id, quantity }: props) {
     const { removeFromCart, cartItems } = useShoppingCart();
     const { userID, loggedIn } = useUser();
     const [product, setProduct] = useState<IProduct>();
-    const removeFromDatabase = async () => {
+    const removeItem = async () => {
         removeFromCart(id);
-        const options: RequestInit = {
+	if(loggedIn){
+	const options: RequestInit = {
             method: 'POST',
             body: JSON.stringify({ shoppingCart: cartItems, userID: userID })
-        }
+	}
         const response = await fetch('/api/setShoppingCart', options);
+	}
+        
     }
     useEffect(() => {
         const options: RequestInit = {
@@ -41,7 +44,7 @@ export default function CartItem({ id, quantity }: props) {
                 <div className={styles.quantity}>QTY: {quantity}</div>
             </div>
             <div className={styles.remove}>
-                <button onClick={e => loggedIn ? removeFromDatabase() : console.log("not signed in")}>Remove</button>
+                <button onClick={e => removeItem()}>Remove</button>
             </div>
         </div>
     )
